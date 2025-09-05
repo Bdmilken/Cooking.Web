@@ -1,31 +1,36 @@
 <!doctype html>
 <html>
 <head>
-    <title>Cooking Videos</title>
+    <title>Cooking Con Chef Cho</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Cooking Videos</h1>
+    <h1 class="site-title">Cooking Con Chef Cho</h1>
     {% for video in videos %}
-    <div>
+    <div class="video-container">
         <h2>{{ video.title }}</h2>
-        <video width="480" controls>
-            <source src="{{ url_for('static', filename='videos/' + video.filename) }}" type="video/mp4">
-        </video>
-        <form action="{{ url_for('like', video_id=video.id) }}" method="post">
-            <button type="submit">Like ({{ video.likes }})</button>
-        </form>
-        <h3>Comments</h3>
-        <ul>
-            {% for c in video.comments %}
-            <li>{{ c.content }}</li>
-            {% else %}
-            <li>No comments yet.</li>
-            {% endfor %}
-        </ul>
-        <form action="{{ url_for('comment', video_id=video.id) }}" method="post">
-            <input type="text" name="content" placeholder="Add comment">
-            <button type="submit">Comment</button>
-        </form>
+        <div class="video-wrapper">
+            <video controls>
+                <source src="{{ url_for('static', filename='videos/' + video.filename) }}" type="video/mp4">
+            </video>
+            <form class="like-form" action="{{ url_for('like', video_id=video.id) }}" method="post">
+                <button type="submit" class="like-button">&#10084; {{ video.likes }}</button>
+            </form>
+        </div>
+        <div class="comments">
+            <h3>Comments</h3>
+            <ul>
+                {% for c in video.comments %}
+                <li>{{ c.content }}</li>
+                {% else %}
+                <li>No comments yet.</li>
+                {% endfor %}
+            </ul>
+            <form action="{{ url_for('comment', video_id=video.id) }}" method="post" class="comment-form">
+                <input type="text" name="content" placeholder="Add comment">
+                <button type="submit">Comment</button>
+            </form>
+        </div>
     </div>
     {% endfor %}
 </body>
