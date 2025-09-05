@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <title>Cooking Videos</title>
+</head>
+<body>
+    <h1>Cooking Videos</h1>
+    {% for video in videos %}
+    <div>
+        <h2>{{ video.title }}</h2>
+        <video width="480" controls>
+            <source src="{{ url_for('static', filename='videos/' + video.filename) }}" type="video/mp4">
+        </video>
+        <form action="{{ url_for('like', video_id=video.id) }}" method="post">
+            <button type="submit">Like ({{ video.likes }})</button>
+        </form>
+        <h3>Comments</h3>
+        <ul>
+            {% for c in video.comments %}
+            <li>{{ c.content }}</li>
+            {% else %}
+            <li>No comments yet.</li>
+            {% endfor %}
+        </ul>
+        <form action="{{ url_for('comment', video_id=video.id) }}" method="post">
+            <input type="text" name="content" placeholder="Add comment">
+            <button type="submit">Comment</button>
+        </form>
+    </div>
+    {% endfor %}
+</body>
+</html>
