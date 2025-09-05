@@ -9,14 +9,19 @@
     {% for video in videos %}
     <div class="video-container">
         <h2>{{ video.title }}</h2>
+        <p>{{ video.description }}</p>
         <div class="video-wrapper">
             <video controls>
                 <source src="{{ url_for('static', filename='videos/' + video.filename) }}" type="video/mp4">
             </video>
-            <form class="like-form" action="{{ url_for('like', video_id=video.id) }}" method="post">
-                <button type="submit" class="like-button">&#10084; {{ video.likes }}</button>
-            </form>
         </div>
+        <form class="like-form" action="{{ url_for('like', video_id=video.id) }}" method="post">
+            {% if video.id in session.get('liked_videos', []) %}
+            <button type="submit" class="like-button liked">Unlike ({{ video.likes }})</button>
+            {% else %}
+            <button type="submit" class="like-button">Like ({{ video.likes }})</button>
+            {% endif %}
+        </form>
         <div class="comments">
             <h3>Comments</h3>
             <ul>

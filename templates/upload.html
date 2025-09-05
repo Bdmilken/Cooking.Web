@@ -8,8 +8,30 @@
     <form method="post" enctype="multipart/form-data">
         <input type="password" name="password" placeholder="Password"><br>
         <input type="text" name="title" placeholder="Title"><br>
+        <textarea name="description" placeholder="Description"></textarea><br>
         <input type="file" name="video" accept="video/*"><br>
         <button type="submit">Upload</button>
     </form>
+
+    <h2>Existing Videos</h2>
+    {% for video in videos %}
+    <div class="video-container">
+        <video width="200" controls>
+            <source src="{{ url_for('static', filename='videos/' + video.filename) }}" type="video/mp4">
+        </video>
+        <form method="post" action="{{ url_for('edit', video_id=video.id) }}">
+            <input type="password" name="password" placeholder="Password"><br>
+            <input type="text" name="title" value="{{ video.title }}"><br>
+            <textarea name="description">{{ video.description }}</textarea><br>
+            <button type="submit">Save</button>
+        </form>
+        <form method="post" action="{{ url_for('delete', video_id=video.id) }}">
+            <input type="password" name="password" placeholder="Password"><br>
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+    {% else %}
+    <p>No videos uploaded yet.</p>
+    {% endfor %}
 </body>
 </html>
