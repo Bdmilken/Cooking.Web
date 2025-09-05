@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
+from sqlalchemy import inspect, text
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = os.path.join('static', 'videos')
@@ -27,6 +28,15 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     video_id = db.Column(db.Integer, db.ForeignKey('video.id'), nullable=False)
     content = db.Column(db.Text, nullable=False)
+
+
+with app.app_context():
+    db.create_all()
+    inspector = inspect(db.engine)
+    columns = [col['name'] for col in inspector.get_columns('video')]
+    if 'description' not in columns:
+        db.session.execute(text("ALTER TABLE video ADD COLUMN description TEXT DEFAULT ''"))
+        db.session.commit()
 
 
 @app.route('/')
@@ -112,6 +122,4 @@ def edit(video_id):
 
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)
