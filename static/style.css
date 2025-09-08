@@ -75,6 +75,35 @@ body {
     padding: 120px 20px 120px;
 }
 
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-row label {
+    width: 100px;
+    margin-right: 10px;
+}
+
+.form-row input[type="text"],
+.form-row input[type="password"],
+.form-row input[type="file"],
+.form-row textarea {
+    flex: 1;
+    padding: 5px;
+}
+
+.upload-button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 .upload-form-section,
 .existing-videos-section {
     flex: 1;
