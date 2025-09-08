@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    background-color: ivory;
     margin: 0;
     padding: 0;
 }
@@ -8,17 +8,17 @@ body {
 .site-title {
     text-align: center;
     margin-top: 20px;
-    color: #d84315;
-    text-shadow: 1px 1px #ffcc80;
+    color: #555;
+    text-shadow: 1px 1px #e5e5e5;
 }
 
 .video-container {
     width: 500px;
     margin: 20px auto;
     padding: 15px;
-    border: 2px solid #ffb74d;
+    border: 2px solid #e0e0d1;
     border-radius: 8px;
-    background-color: #fff8e1;
+    background-color: #fffff8;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -35,7 +35,7 @@ body {
 }
 
 .like-button {
-    background: #ff7043;
+    background: #6b8e23;
     border: none;
     color: #fff;
     font-size: 16px;
@@ -45,7 +45,7 @@ body {
 }
 
 .like-button.liked {
-    background: #e64a19;
+    background: #556b2f;
 }
 
 .comments {
@@ -66,18 +66,20 @@ body {
     cursor: pointer;
 }
 
+
 .upload-page {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     align-items: flex-start;
-    padding: 20px;
+    padding: 120px 20px 120px;
 }
 
 .upload-form-section,
 .existing-videos-section {
     flex: 1;
-    background-color: #fff8e1;
-    border: 2px solid #ffb74d;
+    background-color: #fffff8;
+    border: 2px solid #e0e0d1;
     border-radius: 8px;
     padding: 15px;
 }
