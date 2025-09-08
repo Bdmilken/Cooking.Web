@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #fdfdfd;
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
     margin: 0;
     padding: 0;
 }
@@ -8,15 +8,18 @@ body {
 .site-title {
     text-align: center;
     margin-top: 20px;
+    color: #d84315;
+    text-shadow: 1px 1px #ffcc80;
 }
 
 .video-container {
     width: 500px;
     margin: 20px auto;
     padding: 15px;
-    border: 1px solid #ccc;
+    border: 2px solid #ffb74d;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #fff8e1;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .video-wrapper {
@@ -32,15 +35,17 @@ body {
 }
 
 .like-button {
-    background: transparent;
+    background: #ff7043;
     border: none;
-    color: #e74c3c;
-    font-size: 24px;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 15px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
 .like-button.liked {
-    color: #c0392b;
+    background: #e64a19;
 }
 
 .comments {
@@ -54,6 +59,11 @@ body {
 
 .comment-form button {
     padding: 5px 10px;
+    background: #4db6ac;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .upload-page {
@@ -66,9 +76,26 @@ body {
 .upload-form-section,
 .existing-videos-section {
     flex: 1;
+    background-color: #fff8e1;
+    border: 2px solid #ffb74d;
+    border-radius: 8px;
+    padding: 15px;
 }
 
 .existing-videos-section .video-container {
     width: 100%;
     margin: 0 0 20px 0;
 }
+
+.corner {
+    position: fixed;
+    width: 80px;
+    z-index: 1000;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+.corner.top-left { top: 10px; left: 10px; }
+.corner.top-right { top: 10px; right: 10px; }
+.corner.bottom-left { bottom: 10px; left: 10px; }
+.corner.bottom-right { bottom: 10px; right: 10px; }

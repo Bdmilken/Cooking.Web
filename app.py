@@ -75,7 +75,7 @@ def comment(video_id):
 def upload():
     if request.method == 'POST':
         password = request.form.get('password', '')
-        if password != os.environ.get('PRODUCER_PASSWORD', 'secret'):
+        if password != os.environ.get('PRODUCER_PASSWORD', 'Peachiesbbiesrock1456'):
             return 'Unauthorized', 403
         file = request.files.get('video')
         title = request.form.get('title', '')
@@ -95,7 +95,7 @@ def upload():
 @app.post('/delete/<int:video_id>')
 def delete(video_id):
     password = request.form.get('password', '')
-    if password != os.environ.get('PRODUCER_PASSWORD', 'secret'):
+    if password != os.environ.get('PRODUCER_PASSWORD', 'Peachiesbbiesrock1456'):
         return 'Unauthorized', 403
     video = Video.query.get_or_404(video_id)
     file_path = os.path.join(app.config['UPLOAD_FOLDER'], video.filename)
@@ -109,7 +109,7 @@ def delete(video_id):
 @app.post('/edit/<int:video_id>')
 def edit(video_id):
     password = request.form.get('password', '')
-    if password != os.environ.get('PRODUCER_PASSWORD', 'secret'):
+    if password != os.environ.get('PRODUCER_PASSWORD', 'Peachiesbbiesrock1456'):
         return 'Unauthorized', 403
     video = Video.query.get_or_404(video_id)
     title = request.form.get('title', '')
