@@ -12,12 +12,26 @@
     <div class="upload-page">
         <div class="upload-form-section">
             <h1>Upload Video</h1>
-            <form method="post" enctype="multipart/form-data">
-                <input type="password" name="password" placeholder="Password"><br>
-                <input type="text" name="title" placeholder="Title"><br>
-                <textarea name="description" placeholder="Description"></textarea><br>
-                <input type="file" name="video" accept="video/*"><br>
-                <button type="submit">Upload</button>
+            <form method="post" enctype="multipart/form-data" class="upload-form">
+                <div class="form-row">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password">
+                </div>
+                <div class="form-row">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" placeholder="Title">
+                </div>
+                <div class="form-row">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" placeholder="Description"></textarea>
+                </div>
+                <div class="form-row">
+                    <label for="video">Video</label>
+                    <input type="file" id="video" name="video" accept="video/*">
+                </div>
+                <div class="form-row">
+                    <button type="submit" class="upload-button">Upload</button>
+                </div>
             </form>
         </div>
 
@@ -28,15 +42,31 @@
                 <video width="200" controls>
                     <source src="{{ url_for('static', filename='videos/' + video.filename) }}" type="video/mp4">
                 </video>
-                <form method="post" action="{{ url_for('edit', video_id=video.id) }}">
-                    <input type="password" name="password" placeholder="Password"><br>
-                    <input type="text" name="title" value="{{ video.title }}"><br>
-                    <textarea name="description">{{ video.description }}</textarea><br>
-                    <button type="submit">Save</button>
+                <form method="post" action="{{ url_for('edit', video_id=video.id) }}" class="edit-form">
+                    <div class="form-row">
+                        <label for="edit-password-{{ video.id }}">Password</label>
+                        <input type="password" id="edit-password-{{ video.id }}" name="password" placeholder="Password">
+                    </div>
+                    <div class="form-row">
+                        <label for="edit-title-{{ video.id }}">Title</label>
+                        <input type="text" id="edit-title-{{ video.id }}" name="title" value="{{ video.title }}">
+                    </div>
+                    <div class="form-row">
+                        <label for="edit-description-{{ video.id }}">Description</label>
+                        <textarea id="edit-description-{{ video.id }}" name="description">{{ video.description }}</textarea>
+                    </div>
+                    <div class="form-row">
+                        <button type="submit">Save</button>
+                    </div>
                 </form>
-                <form method="post" action="{{ url_for('delete', video_id=video.id) }}">
-                    <input type="password" name="password" placeholder="Password"><br>
-                    <button type="submit">Delete</button>
+                <form method="post" action="{{ url_for('delete', video_id=video.id) }}" class="delete-form">
+                    <div class="form-row">
+                        <label for="delete-password-{{ video.id }}">Password</label>
+                        <input type="password" id="delete-password-{{ video.id }}" name="password" placeholder="Password">
+                    </div>
+                    <div class="form-row">
+                        <button type="submit">Delete</button>
+                    </div>
                 </form>
             </div>
             {% else %}
