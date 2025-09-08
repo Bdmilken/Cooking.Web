@@ -11,7 +11,7 @@ Simple Flask application for uploading and viewing cooking videos.
    ```bash
    pip install -r requirements.txt
    ```
-2. (Optional) Set a custom password for uploads:
+2. (Optional) Set a custom password for uploads (default: `peachybbiesRock12457`):
    ```bash
    export PRODUCER_PASSWORD=mysecret
    ```
